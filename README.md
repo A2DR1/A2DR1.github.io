@@ -50,11 +50,11 @@ npm install
 cp .env.local.example .env.local
 ```
 
-Edit `.env.local`:
+Edit `.env.local` and fill in your values:
 
 ```env
-MONGODB_URI=mongodb+srv://YOUR_USER:YOUR_PASSWORD@cluster0.xxxxx.mongodb.net/portfolio
-GITHUB_TOKEN=ghp_XXXXXXXXXXXXXXXXXXXX   # optional, increases GH rate limit
+MONGODB_URI=<your MongoDB Atlas connection string>
+GITHUB_TOKEN=<optional — increases GitHub API rate limit>
 ```
 
 To get a MongoDB URI:
