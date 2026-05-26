@@ -465,6 +465,75 @@ function CTA() {
 }
 
 // ─────────────────────────────────────────────
+// Publications
+// ─────────────────────────────────────────────
+
+const publications = [
+  {
+    title: "Keep the Proof State Live: Snapshotting for Efficient Tactic Search in Lean 4",
+    authors: "Austin Shen, Yunong Shi",
+    venue: "arXiv · cs.LO, cs.AI",
+    date: "May 2026",
+    abstract: "Identifies that parallel tactic search reconstructs proof states repeatedly, consuming over 99% of per-branch processing time. Introduces proof-state snapshotting — capturing an elaborated proof state once and reusing it across search branches via a Lean 4 language server extension. Achieves 5.6–50× wall-time speedup (avg 14×, median 9.7×) on miniF2F-v2 benchmarks.",
+    arxiv: "https://arxiv.org/abs/2605.25556",
+    tags: ["Lean 4", "Theorem Proving", "Tactic Search", "cs.LO", "cs.AI"],
+  },
+];
+
+function Publications() {
+  return (
+    <section id="publications" className="py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+      <AnimatedSection>
+        <span className="font-mono text-amber-400 text-sm tracking-widest uppercase mb-3 block text-center">Publications</span>
+        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-16 text-center leading-tight">
+          Published <span className="gradient-text">Work</span>
+        </h2>
+      </AnimatedSection>
+      <div className="flex flex-col gap-6">
+        {publications.map((pub, i) => (
+          <AnimatedSection key={i} delay={i * 0.1}>
+            <div className="glass-card rounded-2xl p-8 hover:border-amber-500/30 transition-all hover:shadow-lg hover:shadow-amber-500/5 group">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+                <div className="flex-1">
+                  <h3 className="text-white font-bold text-lg leading-snug group-hover:text-amber-100 transition-colors mb-2">
+                    {pub.title}
+                  </h3>
+                  <p className="text-amber-400 text-sm font-medium mb-1">{pub.authors}</p>
+                  <div className="flex items-center gap-2 text-slate-500 text-xs font-mono">
+                    <span>{pub.venue}</span>
+                    <span>·</span>
+                    <span>{pub.date}</span>
+                  </div>
+                </div>
+                <a
+                  href={pub.arxiv}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-amber-500/30 text-amber-400 text-sm font-medium hover:bg-amber-500/10 transition-all hover:-translate-y-0.5"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  arXiv
+                </a>
+              </div>
+              <p className="text-slate-400 text-sm leading-relaxed mb-5">{pub.abstract}</p>
+              <div className="flex flex-wrap gap-2">
+                {pub.tags.map(tag => (
+                  <span key={tag} className="px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </AnimatedSection>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────
 // Page
 // ─────────────────────────────────────────────
 
@@ -475,6 +544,7 @@ export default function HomePage() {
       <About />
       <Skills />
       <Research />
+      <Publications />
       <Experience />
       <CTA />
     </>
