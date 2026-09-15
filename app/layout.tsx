@@ -10,23 +10,26 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Austin Shen — Math & Data Science @ UMich",
+  title: "Austin Shen | CS, Math & Data Science @ UMich",
   description:
-    "Personal portfolio of Austin (Zi Jun) Shen — researcher, engineer, and student at the University of Michigan.",
+    "Personal site of Austin Shen, a Computer Science, Mathematics, and Data Science student at the University of Michigan working on neural theorem proving in Lean 4 and exact computation in tiny transformers.",
   keywords: [
     "Austin Shen",
     "University of Michigan",
+    "Computer Science",
     "Math",
     "Data Science",
+    "Lean 4",
+    "Theorem Proving",
     "Machine Learning",
     "Research",
     "Portfolio",
   ],
   authors: [{ name: "Austin Shen", url: "https://github.com/A2DR1" }],
   openGraph: {
-    title: "Austin Shen — Portfolio",
+    title: "Austin Shen | Portfolio",
     description:
-      "Researcher & Engineer at the University of Michigan studying Math & Data Science.",
+      "Researcher and engineer at the University of Michigan studying Computer Science, Mathematics, and Data Science.",
     type: "website",
   },
 };

@@ -30,7 +30,7 @@ const FALLBACK_POSTS: Post[] = [
     title: "Voice-Controlled AR: Combining YOLOv11, GPT-4o, and Meta Quest 3",
     slug: "voice-ar-assistant",
     excerpt:
-      "A deep dive into the multi-modal pipeline powering our AR hand assistant — real-time object detection, natural language commands, and zero-shot visual classification.",
+      "A deep dive into the multi-modal pipeline powering our AR hand assistant: real-time object detection, natural language commands, and zero-shot visual classification.",
     date: new Date("2025-05-10").toISOString(),
     tags: ["AR", "computer-vision", "LLM", "meta-quest"],
   },

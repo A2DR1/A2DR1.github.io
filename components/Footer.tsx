@@ -13,7 +13,7 @@ export default function Footer() {
               <span className="font-mono text-sm text-amber-400">/&gt;</span>
             </div>
             <p className="text-slate-500 text-sm leading-relaxed">
-              Math & Data Science @ University of Michigan.<br />
+              CS, Math &amp; Data Science @ University of Michigan.<br />
               Building at the intersection of AI and formal reasoning.
             </p>
           </div>

@@ -59,6 +59,68 @@ function ForkIcon() {
   );
 }
 
+const featured = [
+  {
+    title: "Voice-Controlled AR Hand Assistant",
+    period: "Jan to May 2025",
+    tag: "AR / Computer Vision",
+    tagColor: "bg-cyan-500/10 text-yellow-500 border-yellow-500/20",
+    description:
+      "Built a multi-modal AR pipeline on Meta Quest 3 using the Meta XR SDK. Integrates YOLOv11 for real-time object detection, GPT-4o for natural language understanding, CLIP for zero-shot classification, and Moondream for visual question answering.",
+    bullets: [
+      "Meta Quest 3 + Meta XR SDK deployment",
+      "YOLOv11 real-time object detection",
+      "GPT-4o + CLIP + Moondream multi-modal pipeline",
+    ],
+    icon: "🥽",
+  },
+  {
+    title: "Transformer Language Model from First Principles",
+    period: "2026",
+    tag: "Learning project",
+    tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    description:
+      "A GPT written from scratch in NumPy and PyTorch without reference implementations. Along the way I measured RNN gradient decay, pre-norm versus post-norm gradient flow, and an emergent previous-token head (97% of attention mass).",
+    bullets: [
+      "Hand-derived backprop in NumPy, validated against numerical gradients (under 1e-4)",
+      "Multi-head causal attention verified numerically identical to PyTorch's fused kernel",
+      "Trained an 892K-parameter GPT (4 layers, 4 heads, d_model 128) on character-level Shakespeare; 54 unit tests passing",
+    ],
+    icon: "🧮",
+  },
+];
+
+function FeaturedCard({ item, index }: { item: (typeof featured)[number]; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="glass-card rounded-2xl p-8 h-full flex flex-col hover:border-amber-500/30 transition-all hover:shadow-lg hover:shadow-amber-500/5 group"
+    >
+      <div className="flex items-start justify-between gap-4 mb-5">
+        <div className="text-3xl">{item.icon}</div>
+        <span className={`px-3 py-1 rounded-full text-xs font-medium border ${item.tagColor}`}>
+          {item.tag}
+        </span>
+      </div>
+      <h3 className="text-white font-bold text-xl mb-2 leading-tight group-hover:text-amber-100 transition-colors">
+        {item.title}
+      </h3>
+      <span className="text-slate-500 text-sm font-mono mb-4 block">{item.period}</span>
+      <p className="text-slate-400 text-sm leading-relaxed mb-5">{item.description}</p>
+      <ul className="space-y-2">
+        {item.bullets.map((b) => (
+          <li key={b} className="flex items-start gap-2 text-sm text-slate-500">
+            <span className="mt-1.5 w-1 h-1 rounded-full bg-amber-500 shrink-0" />
+            {b}
+          </li>
+        ))}
+      </ul>
+    </motion.div>
+  );
+}
+
 function ProjectCard({ repo, index }: { repo: Repo; index: number }) {
   const relativeTime = () => {
     const diff = Date.now() - new Date(repo.updated_at).getTime();
@@ -183,13 +245,35 @@ export default function ProjectsPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <AnimatedSection className="text-center mb-16">
-          <span className="font-mono text-amber-400 text-sm tracking-widest uppercase mb-3 block">GitHub Portfolio</span>
+          <span className="font-mono text-amber-400 text-sm tracking-widest uppercase mb-3 block">Portfolio</span>
           <h1 className="text-5xl sm:text-6xl font-bold text-white mb-5 leading-tight">
             My <span className="gradient-text">Projects</span>
           </h1>
           <p className="text-slate-400 text-lg max-w-xl mx-auto">
-            Open-source work, research prototypes, and side projects from GitHub.
+            Selected builds, followed by open-source work and prototypes from GitHub.
           </p>
+        </AnimatedSection>
+
+        {/* Featured projects */}
+        <section className="mb-24">
+          <AnimatedSection className="mb-10">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white text-center">
+              Featured <span className="gradient-text">Projects</span>
+            </h2>
+          </AnimatedSection>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {featured.map((item, i) => (
+              <FeaturedCard key={item.title} item={item} index={i} />
+            ))}
+          </div>
+        </section>
+
+        {/* GitHub section heading */}
+        <AnimatedSection className="mb-10 text-center">
+          <span className="font-mono text-amber-400 text-sm tracking-widest uppercase mb-3 block">GitHub</span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">
+            From <span className="gradient-text">GitHub</span>
+          </h2>
         </AnimatedSection>
 
         {/* Language filter */}

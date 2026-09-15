@@ -26,11 +26,11 @@ const FALLBACK_POSTS: Record<string, Post> = {
     tags: ["research", "lean4", "AI", "formal-methods"],
     content: `# Building LeanQC: Formalizing Math with Neural Networks
 
-Formal theorem proving has long been a dream of the AI community — the idea that a machine could not just suggest proofs but *verify* them in a rigorous logical system. LeanQC is our attempt to make this a reality using a neuro-symbolic approach.
+Formal theorem proving has long been a dream of the AI community: the idea that a machine could not just suggest proofs but *verify* them in a rigorous logical system. LeanQC is our attempt to make this a reality using a neuro-symbolic approach.
 
 ## The Problem
 
-Informal mathematics — the kind you find in textbooks and research papers — is remarkably hard to formalize. Mathematicians rely on implicit context, notation conventions, and domain knowledge that is incredibly difficult to encode explicitly. Tools like Lean 4 demand absolute precision: every step must be justified with a valid tactic.
+Informal mathematics, the kind you find in textbooks and research papers, is remarkably hard to formalize. Mathematicians rely on implicit context, notation conventions, and domain knowledge that is incredibly difficult to encode explicitly. Tools like Lean 4 demand absolute precision: every step must be justified with a valid tactic.
 
 ## The DSP-Plus Architecture
 
@@ -40,14 +40,14 @@ Our approach, DSP-Plus (Draft, Sketch, Prove), decomposes the formalization task
 A large language model generates an informal proof sketch from the original mathematical statement. This stage captures high-level reasoning without worrying about formal syntax.
 
 ### 2. Sketch
-The sketch is translated into a Lean 4 *incomplete proof* — a structure with known proof obligations. We use structured generation with constrained decoding to ensure syntactic validity.
+The sketch is translated into a Lean 4 *incomplete proof*, a structure with known proof obligations. We use structured generation with constrained decoding to ensure syntactic validity.
 
 ### 3. Prove
 Individual proof obligations are discharged using LeanTree, a tree-structured search that calls Lean's elaborator as an oracle. Each failed elaboration provides structured feedback that is fed back into the model.
 
 ## Iterative Compiler Feedback
 
-One of the key innovations is our use of Lean's compiler errors as training signal. When a generated tactic fails, the error message encodes exactly *why* it failed — type mismatches, missing hypotheses, unknown identifiers. We parse these errors and construct few-shot prompts that guide the model toward a valid completion.
+One of the key innovations is our use of Lean's compiler errors as training signal. When a generated tactic fails, the error message encodes exactly *why* it failed: type mismatches, missing hypotheses, unknown identifiers. We parse these errors and construct few-shot prompts that guide the model toward a valid completion.
 
 ## Benchmarks
 
@@ -61,7 +61,7 @@ Our Pass@k results show consistent improvement over baseline DSP, with the itera
 
 The biggest insight is that **compiler feedback is underutilized** in neural theorem proving. Most systems treat proof generation as a one-shot problem; we show that tight integration with the formal system's error reporting dramatically improves success rates.
 
-Building this system also deepened my appreciation for Lean 4's metaprogramming capabilities — the ability to extend the language from within is a superpower for this kind of hybrid system.
+Building this system also deepened my appreciation for Lean 4's metaprogramming capabilities. The ability to extend the language from within is a superpower for this kind of hybrid system.
 
 ## Next Steps
 
@@ -78,7 +78,7 @@ We're working on scaling to harder problems and improving the Draft stage with r
     tags: ["AR", "computer-vision", "LLM", "meta-quest"],
     content: `# Voice-Controlled AR: Combining YOLOv11, GPT-4o, and Meta Quest 3
 
-Augmented Reality has always promised a future where your environment becomes an interface. This project was our attempt to make that real — a hands-free AR assistant that understands what you're looking at and responds to natural voice commands.
+Augmented Reality has always promised a future where your environment becomes an interface. This project was our attempt to make that real: a hands-free AR assistant that understands what you're looking at and responds to natural voice commands.
 
 ## System Architecture
 
@@ -96,19 +96,19 @@ Voice input is transcribed via Whisper and passed to GPT-4o with a structured pr
 GPT-4o returns a structured action plan that the AR system executes.
 
 ### Visual Classification (CLIP + Moondream)
-For fine-grained identification — "which of these buttons is the power button?" — we combine CLIP's zero-shot classification with Moondream's visual question answering. This lets users ask about visual properties that YOLO's bounding boxes don't capture.
+For fine-grained identification ("which of these buttons is the power button?") we combine CLIP's zero-shot classification with Moondream's visual question answering. This lets users ask about visual properties that YOLO's bounding boxes don't capture.
 
 ## Meta Quest 3 Integration
 
 The Meta XR SDK's PassThrough API gives us access to the camera feed with minimal latency. We render AR overlays using Unity's URP pipeline with custom shaders for the bounding box visualizations.
 
-The hardest part was achieving sub-100ms end-to-end latency for voice commands — we ended up running YOLOv11 and CLIP on-device and offloading GPT-4o calls to a local server.
+The hardest part was achieving sub-100ms end-to-end latency for voice commands. We ended up running YOLOv11 and CLIP on-device and offloading GPT-4o calls to a local server.
 
 ## What We Learned
 
 Real-time AR is fundamentally a systems problem. Every millisecond of latency is perceptible, and the Quest 3's thermal constraints mean you can't simply max out every model. We learned to aggressively quantize models and design the pipeline with graceful degradation.
 
-The multimodal combination of vision + language turned out to be more capable than any single model — CLIP could identify objects YOLO had never seen, while GPT-4o could reason about spatial relationships.
+The multimodal combination of vision + language turned out to be more capable than any single model: CLIP could identify objects YOLO had never seen, while GPT-4o could reason about spatial relationships.
 `,
   },
   "llmae-attack-eval": {
@@ -121,7 +121,7 @@ The multimodal combination of vision + language turned out to be more capable th
     tags: ["LLM", "security", "django", "docker"],
     content: `# LLMAE: Automated LLM Prompt Attack Evaluation
 
-At BotSmart, I spent the summer building LLMAE — an automated platform for evaluating LLM robustness against adversarial prompts. Here's what I built and what I learned.
+At BotSmart, I spent the summer building LLMAE, an automated platform for evaluating LLM robustness against adversarial prompts. Here's what I built and what I learned.
 
 ## The Problem
 
@@ -142,13 +142,13 @@ Pass rates, attack success rates by category, and model comparison dashboards ar
 
 ## Docker + CI/CD
 
-The entire stack runs in Docker Compose for local development and deploys to a single EC2 instance via a GitHub Actions pipeline. Multi-stage Docker builds kept the images lean — the Django container is under 200MB.
+The entire stack runs in Docker Compose for local development and deploys to a single EC2 instance via a GitHub Actions pipeline. Multi-stage Docker builds kept the images lean. The Django container is under 200MB.
 
 ## Key Findings
 
 - Encoding tricks (Base64, Unicode obfuscation) remain highly effective against models without explicit training on encoded inputs
 - Context injection attacks succeed more often when the injected context is semantically related to the user's stated intent
-- Judge model quality is the biggest bottleneck — a weak evaluator produces noisy data that hides real attack success
+- Judge model quality is the biggest bottleneck. A weak evaluator produces noisy data that hides real attack success
 
 ## What I'd Do Differently
 
@@ -169,7 +169,7 @@ This is a practical walkthrough of the formalization workflow we've developed in
 
 ## What Is Lean 4?
 
-Lean 4 is a functional programming language and interactive theorem prover. Its type system is expressive enough to encode mathematical propositions as types, and proofs as programs. When your Lean code compiles, your proof is correct — by construction.
+Lean 4 is a functional programming language and interactive theorem prover. Its type system is expressive enough to encode mathematical propositions as types, and proofs as programs. When your Lean code compiles, your proof is correct, by construction.
 
 ## A Simple Example
 
@@ -197,7 +197,7 @@ theorem add_zero_eq' (n : ℕ) : n + 0 = n := by
 Extract the precise mathematical claim. "For all n..." means we need a universal quantifier \`∀ n\`.
 
 ### Step 2: Type the Signature
-Write the Lean type signature before the proof. This is often the hardest part — getting the types right.
+Write the Lean type signature before the proof. This is often the hardest part: getting the types right.
 
 ### Step 3: Explore with Tactics
 Use the interactive mode (\`#check\`, \`#eval\`, \`sorry\`) to explore. Don't try to write the full proof at once.
@@ -213,7 +213,7 @@ Lean's standard library (Mathlib) has thousands of lemmas. Before proving someth
 
 ## LeanQC's Approach
 
-In LeanQC, we automate steps 2-4 using a combination of language models and the Lean compiler's feedback. The key insight is that Lean's error messages are structured enough to be parsed programmatically — each error tells you exactly what type was expected vs. received, which gives the model precise guidance for the next attempt.
+In LeanQC, we automate steps 2-4 using a combination of language models and the Lean compiler's feedback. The key insight is that Lean's error messages are structured enough to be parsed programmatically. Each error tells you exactly what type was expected vs. received, which gives the model precise guidance for the next attempt.
 
 Formal verification is hard, but the tooling has never been better. Give Lean 4 a try.
 `,

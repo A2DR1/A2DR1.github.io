@@ -132,7 +132,7 @@ export default function ContactPage() {
                   <span className="text-green-400 text-sm font-medium">Available</span>
                 </div>
                 <p className="text-slate-500 text-sm leading-relaxed">
-                  Currently open to research collaborations and SWE/ML internships for Summer 2026.
+                  Currently open to research collaborations, Summer 2027 internships, and full-time roles starting 2027.
                 </p>
               </div>
             </div>
@@ -159,7 +159,7 @@ export default function ContactPage() {
                     </div>
                     <h3 className="text-white text-xl font-bold mb-2">Message Sent!</h3>
                     <p className="text-slate-400 text-sm mb-8">
-                      Thanks for reaching out. I&apos;ll get back to you within 1–2 business days.
+                      Thanks for reaching out. I&apos;ll get back to you within 1 to 2 business days.
                     </p>
                     <button
                       onClick={() => setState("idle")}
