@@ -28,7 +28,7 @@ A full-featured personal portfolio website built with Next.js 14 (App Router), T
 
 | Method | Route | Description |
 |--------|-------|-------------|
-| POST | `/api/contact` | Save contact form submission |
+| POST | `/api/contact` | Save contact form submission to MongoDB and notify by email (Resend) and/or webhook (Slack, Discord), each when configured |
 | GET | `/api/projects` | Proxy GitHub API for A2DR1's repos |
 | GET | `/api/blog` | List blog posts |
 | GET | `/api/blog/[slug]` | Single blog post by slug |
@@ -54,7 +54,11 @@ Edit `.env.local` and fill in your values:
 
 ```env
 MONGODB_URI=<your MongoDB Atlas connection string>
-GITHUB_TOKEN=<optional — increases GitHub API rate limit>
+GITHUB_TOKEN=<optional, raises the GitHub API rate limit>
+RESEND_API_KEY=<optional, emails each contact submission via Resend>
+CONTACT_TO_EMAIL=<optional, recipient for those emails; defaults to austinsz@umich.edu>
+CONTACT_FROM_EMAIL=<optional, sender; defaults to onboarding@resend.dev>
+CONTACT_WEBHOOK_URL=<optional, Slack or Discord incoming webhook for each submission>
 ```
 
 To get a MongoDB URI:
@@ -91,6 +95,7 @@ Follow the prompts. Vercel auto-detects Next.js.
 3. Add environment variables in the Vercel dashboard:
    - `MONGODB_URI`
    - `GITHUB_TOKEN` (optional)
+   - `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, `CONTACT_FROM_EMAIL`, `CONTACT_WEBHOOK_URL` (optional, contact form notifications)
 4. Deploy
 
 ### Adding a custom domain
