@@ -2,17 +2,17 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#2e2b24] bg-[#111214]">
+    <footer className="border-t border-line bg-ground">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="font-mono text-sm text-amber-400">&lt;</span>
-              <span className="font-bold text-white text-lg">Austin Shen</span>
-              <span className="font-mono text-sm text-amber-400">/&gt;</span>
+              <span className="font-mono text-sm text-link">&lt;</span>
+              <span className="font-bold text-ink text-lg">Austin Shen</span>
+              <span className="font-mono text-sm text-link">/&gt;</span>
             </div>
-            <p className="text-slate-500 text-sm leading-relaxed">
+            <p className="text-dim text-sm leading-relaxed">
               CS, Math &amp; Data Science @ University of Michigan.<br />
               Building at the intersection of AI and formal reasoning.
             </p>
@@ -20,7 +20,7 @@ export default function Footer() {
 
           {/* Links */}
           <div>
-            <h3 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Navigation</h3>
+            <h3 className="text-ink font-semibold text-sm mb-4 uppercase tracking-wider">Navigation</h3>
             <ul className="space-y-2">
               {[
                 { label: "Home", href: "/" },
@@ -31,7 +31,7 @@ export default function Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className="text-slate-500 hover:text-amber-400 text-sm transition-colors"
+                    className="text-dim hover:text-link text-sm transition-colors"
                   >
                     {l.label}
                   </Link>
@@ -42,14 +42,14 @@ export default function Footer() {
 
           {/* Social */}
           <div>
-            <h3 className="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Connect</h3>
+            <h3 className="text-ink font-semibold text-sm mb-4 uppercase tracking-wider">Connect</h3>
             <ul className="space-y-2">
               <li>
                 <a
                   href="https://github.com/A2DR1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-500 hover:text-amber-400 text-sm transition-colors flex items-center gap-2"
+                  className="text-dim hover:text-link text-sm transition-colors flex items-center gap-2"
                 >
                   <GithubIcon /> GitHub
                 </a>
@@ -59,7 +59,7 @@ export default function Footer() {
                   href="https://www.linkedin.com/in/austin-zj-shen"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-500 hover:text-amber-400 text-sm transition-colors flex items-center gap-2"
+                  className="text-dim hover:text-link text-sm transition-colors flex items-center gap-2"
                 >
                   <LinkedinIcon /> LinkedIn
                 </a>
@@ -67,7 +67,7 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:austinsz@umich.edu"
-                  className="text-slate-500 hover:text-amber-400 text-sm transition-colors flex items-center gap-2"
+                  className="text-dim hover:text-link text-sm transition-colors flex items-center gap-2"
                 >
                   <MailIcon /> austinsz@umich.edu
                 </a>
@@ -76,11 +76,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-[#2e2b24] flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-slate-600 text-sm">
+        <div className="mt-10 pt-6 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p className="text-dim text-sm">
             © {new Date().getFullYear()} Austin Shen. All rights reserved.
           </p>
-          <p className="text-slate-600 text-sm font-mono">
+          <p className="text-dim text-sm font-mono">
             Built with Next.js · Deployed on Vercel
           </p>
         </div>

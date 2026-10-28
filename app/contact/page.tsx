@@ -86,11 +86,11 @@ export default function ContactPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <AnimatedSection className="text-center mb-16">
-          <span className="font-mono text-amber-400 text-sm tracking-widest uppercase mb-3 block">Get In Touch</span>
-          <h1 className="text-5xl sm:text-6xl font-bold text-white mb-5 leading-tight">
-            Let&apos;s <span className="gradient-text">Connect</span>
+          <span className="font-mono text-link text-sm tracking-widest uppercase mb-3 block">Get In Touch</span>
+          <h1 className="text-5xl sm:text-6xl font-bold text-ink mb-5 leading-tight">
+            Let&apos;s <span className="hl-maize">Connect</span>
           </h1>
-          <p className="text-slate-400 text-lg max-w-xl mx-auto">
+          <p className="text-muted text-lg max-w-xl mx-auto">
             Open to research collaborations, internship opportunities, and interesting engineering problems. Reach out any time.
           </p>
         </AnimatedSection>
@@ -102,36 +102,36 @@ export default function ContactPage() {
               {contactInfo.map((info) => (
                 <div
                   key={info.label}
-                  className="glass-card rounded-2xl p-5 flex items-center gap-4 group hover:border-amber-500/30 transition-colors"
+                  className="glass-card rounded-2xl p-5 flex items-center gap-4 group hover:border-link transition-colors"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-tint border border-tintbd flex items-center justify-center text-link shrink-0">
                     {info.icon}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-slate-500 text-xs font-mono uppercase tracking-wider mb-0.5">{info.label}</p>
+                    <p className="text-dim text-xs font-mono uppercase tracking-wider mb-0.5">{info.label}</p>
                     {info.href ? (
                       <a
                         href={info.href}
                         target={info.href.startsWith("http") ? "_blank" : undefined}
                         rel={info.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                        className="text-slate-200 text-sm hover:text-amber-400 transition-colors truncate block"
+                        className="text-ink text-sm hover:text-link transition-colors truncate block"
                       >
                         {info.value}
                       </a>
                     ) : (
-                      <p className="text-slate-200 text-sm truncate">{info.value}</p>
+                      <p className="text-ink text-sm truncate">{info.value}</p>
                     )}
                   </div>
                 </div>
               ))}
 
               {/* Availability card */}
-              <div className="glass-card rounded-2xl p-5 border-amber-500/20">
+              <div className="glass-card rounded-2xl p-5 border-tintbd">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                  <span className="text-green-400 text-sm font-medium">Available</span>
+                  <span className="text-emerald-700 text-sm font-medium">Available</span>
                 </div>
-                <p className="text-slate-500 text-sm leading-relaxed">
+                <p className="text-dim text-sm leading-relaxed">
                   Currently open to research collaborations, Summer 2027 internships, and full-time roles starting 2027.
                 </p>
               </div>
@@ -141,7 +141,7 @@ export default function ContactPage() {
           {/* Form */}
           <AnimatedSection delay={0.2} className="lg:col-span-3">
             <div className="glass-card rounded-2xl p-8 relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/3 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-br from-maize/10 to-transparent pointer-events-none" />
 
               <AnimatePresence mode="wait">
                 {state === "success" ? (
@@ -157,13 +157,13 @@ export default function ContactPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <h3 className="text-white text-xl font-bold mb-2">Message Sent!</h3>
-                    <p className="text-slate-400 text-sm mb-8">
+                    <h3 className="text-ink text-xl font-bold mb-2">Message Sent!</h3>
+                    <p className="text-muted text-sm mb-8">
                       Thanks for reaching out. I&apos;ll get back to you within 1 to 2 business days.
                     </p>
                     <button
                       onClick={() => setState("idle")}
-                      className="px-6 py-2.5 rounded-xl bg-[#1a1a1c] border border-[#2e2b24] text-slate-300 hover:text-white hover:border-amber-500/40 text-sm transition-colors"
+                      className="px-6 py-2.5 rounded-xl bg-card border border-line text-ink hover:text-ink hover:border-navy/40 text-sm transition-colors"
                     >
                       Send Another
                     </button>
@@ -176,12 +176,12 @@ export default function ContactPage() {
                     onSubmit={handleSubmit}
                     className="relative z-10 space-y-5"
                   >
-                    <h2 className="text-white text-xl font-bold mb-6">Send a Message</h2>
+                    <h2 className="text-ink text-xl font-bold mb-6">Send a Message</h2>
 
                     {/* Name */}
                     <div>
-                      <label htmlFor="name" className="block text-slate-400 text-sm mb-2 font-mono">
-                        Name <span className="text-amber-500">*</span>
+                      <label htmlFor="name" className="block text-muted text-sm mb-2 font-mono">
+                        Name <span className="text-link">*</span>
                       </label>
                       <input
                         id="name"
@@ -190,14 +190,14 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
                         placeholder="Your name"
-                        className="w-full bg-[#111214] border border-[#2e2b24] rounded-xl px-4 py-3 text-slate-200 text-sm placeholder-slate-600 focus:outline-none focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 transition-colors"
+                        className="w-full bg-ground border border-line rounded-xl px-4 py-3 text-ink text-sm placeholder-faint focus:outline-none focus:border-link focus:ring-1 focus:ring-link/30 transition-colors"
                       />
                     </div>
 
                     {/* Email */}
                     <div>
-                      <label htmlFor="email" className="block text-slate-400 text-sm mb-2 font-mono">
-                        Email <span className="text-amber-500">*</span>
+                      <label htmlFor="email" className="block text-muted text-sm mb-2 font-mono">
+                        Email <span className="text-link">*</span>
                       </label>
                       <input
                         id="email"
@@ -206,14 +206,14 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
                         placeholder="your@email.com"
-                        className="w-full bg-[#111214] border border-[#2e2b24] rounded-xl px-4 py-3 text-slate-200 text-sm placeholder-slate-600 focus:outline-none focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 transition-colors"
+                        className="w-full bg-ground border border-line rounded-xl px-4 py-3 text-ink text-sm placeholder-faint focus:outline-none focus:border-link focus:ring-1 focus:ring-link/30 transition-colors"
                       />
                     </div>
 
                     {/* Message */}
                     <div>
-                      <label htmlFor="message" className="block text-slate-400 text-sm mb-2 font-mono">
-                        Message <span className="text-amber-500">*</span>
+                      <label htmlFor="message" className="block text-muted text-sm mb-2 font-mono">
+                        Message <span className="text-link">*</span>
                       </label>
                       <textarea
                         id="message"
@@ -222,7 +222,7 @@ export default function ContactPage() {
                         value={formData.message}
                         onChange={(e) => setFormData((p) => ({ ...p, message: e.target.value }))}
                         placeholder="What's on your mind?"
-                        className="w-full bg-[#111214] border border-[#2e2b24] rounded-xl px-4 py-3 text-slate-200 text-sm placeholder-slate-600 focus:outline-none focus:border-amber-500/60 focus:ring-1 focus:ring-amber-500/30 transition-colors resize-none"
+                        className="w-full bg-ground border border-line rounded-xl px-4 py-3 text-ink text-sm placeholder-faint focus:outline-none focus:border-link focus:ring-1 focus:ring-link/30 transition-colors resize-none"
                       />
                     </div>
 
@@ -233,7 +233,7 @@ export default function ContactPage() {
                           <circle cx="12" cy="12" r="10" />
                           <path strokeLinecap="round" d="M12 8v4M12 16h.01" />
                         </svg>
-                        <p className="text-red-400 text-sm">{errorMsg}</p>
+                        <p className="text-red-600 text-sm">{errorMsg}</p>
                       </div>
                     )}
 
@@ -241,7 +241,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={state === "loading"}
-                      className="w-full py-3.5 rounded-xl bg-amber-700 hover:bg-amber-600 disabled:bg-amber-700/50 text-white font-semibold text-sm transition-all hover:shadow-lg hover:shadow-amber-500/25 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      className="w-full py-3.5 rounded-xl bg-navy hover:bg-navy/90 disabled:bg-navy/50 text-white font-semibold text-sm transition-all hover:shadow-lg hover:shadow-navy/20 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
                       {state === "loading" ? (
                         <>

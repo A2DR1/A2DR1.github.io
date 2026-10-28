@@ -19,10 +19,10 @@ function IcosahedronWireframe() {
     <mesh ref={meshRef}>
       <icosahedronGeometry args={[1.8, 1]} />
       <meshBasicMaterial
-        color="#d4a853"
+        color="#0c1f3c"
         wireframe
         transparent
-        opacity={0.35}
+        opacity={0.22}
       />
     </mesh>
   );
@@ -41,10 +41,10 @@ function InnerIcosahedron() {
     <mesh ref={meshRef}>
       <icosahedronGeometry args={[1.1, 0]} />
       <meshBasicMaterial
-        color="#c8834a"
+        color="#1d4fa3"
         wireframe
         transparent
-        opacity={0.2}
+        opacity={0.16}
       />
     </mesh>
   );
@@ -77,10 +77,10 @@ function ParticleField() {
     <Points ref={pointsRef} positions={positions} stride={3}>
       <PointMaterial
         transparent
-        color="#d4a853"
+        color="#0c1f3c"
         size={0.025}
         sizeAttenuation
-        opacity={0.6}
+        opacity={0.4}
       />
     </Points>
   );
@@ -98,7 +98,7 @@ function GlowSphere() {
   return (
     <mesh ref={meshRef}>
       <sphereGeometry args={[1.2, 32, 32]} />
-      <meshBasicMaterial color="#1d4ed8" transparent opacity={0.04} />
+      <meshBasicMaterial color="#ffcb05" transparent opacity={0.1} />
     </mesh>
   );
 }
@@ -112,8 +112,8 @@ export default function HeroScene() {
         style={{ background: "transparent" }}
       >
         <ambientLight intensity={0.3} />
-        <pointLight position={[5, 5, 5]} intensity={0.8} color="#d4a853" />
-        <pointLight position={[-5, -3, -5]} intensity={0.4} color="#c8834a" />
+        <pointLight position={[5, 5, 5]} intensity={0.8} color="#ffcb05" />
+        <pointLight position={[-5, -3, -5]} intensity={0.4} color="#1d4fa3" />
         <GlowSphere />
         <IcosahedronWireframe />
         <InnerIcosahedron />

@@ -1,15 +1,40 @@
 @import "tailwindcss";
 
+/* Maize & Blue theme. Light ground, navy ink, maize only as a highlighter. */
 :root {
-  --background: #111214;
-  --foreground: #f0ece0;
-  --card: #1a1a1c;
-  --border: #2e2b24;
-  --accent: #d4a853;
-  --accent-cyan: #c8834a;
+  --ground: #f3f5f8;
+  --card: #ffffff;
+  --line: #dbe1ea;
+  --ink: #0c1f3c;
+  --muted: #4a586d;
+  --dim: #5f6d86;
+  --faint: #9aa5b5;
+  --navy: #0c1f3c;
+  --maize: #ffcb05;
+  --link: #1d4fa3;
+  --tint: #e7edf6;
+  --tintbd: #d3dcea;
+
+  /* Legacy names, kept so nothing that still reads them breaks */
+  --background: var(--ground);
+  --foreground: var(--ink);
+  --border: var(--line);
+  --accent: var(--link);
 }
 
 @theme inline {
+  --color-ground: var(--ground);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-dim: var(--dim);
+  --color-faint: var(--faint);
+  --color-navy: var(--navy);
+  --color-maize: var(--maize);
+  --color-link: var(--link);
+  --color-tint: var(--tint);
+  --color-tintbd: var(--tintbd);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 }
@@ -23,8 +48,8 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--ground);
+  color: var(--ink);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -35,41 +60,40 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #111214;
+  background: var(--ground);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2e2b24;
+  background: #c5cedb;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6;
+  background: var(--navy);
 }
 
-/* Selection */
+/* Selection: maize highlighter, navy text */
 ::selection {
-  background: rgba(212, 168, 83, 0.3);
-  color: #e2e8f0;
+  background: rgba(255, 203, 5, 0.45);
+  color: var(--navy);
 }
 
-/* Gradient text utility */
-.gradient-text {
-  background: linear-gradient(135deg, #d4a853 0%, #c8834a 50%, #e8c87a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Maize highlight under the accented word of a heading */
+.hl-maize {
+  background-image: linear-gradient(transparent 62%, var(--maize) 62%);
+  padding: 0 0.04em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
-/* Glass card */
+/* Card */
 .glass-card {
-  background: rgba(15, 15, 22, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(30, 30, 46, 0.8);
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: 0 1px 2px rgba(12, 31, 60, 0.05);
 }
 
-/* Glow effect */
+/* Soft glow */
 .glow-blue {
-  box-shadow: 0 0 30px rgba(212, 168, 83, 0.15);
+  box-shadow: 0 0 30px rgba(12, 31, 60, 0.10);
 }
 
 /* Code font */

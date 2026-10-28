@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -34,6 +34,10 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#f3f5f8",
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -49,7 +53,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#050508] text-slate-200 antialiased">
+      <body className="bg-ground text-ink antialiased">
         <Navbar />
         <main className="relative">{children}</main>
         <Footer />

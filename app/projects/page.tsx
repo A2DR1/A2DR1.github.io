@@ -36,7 +36,7 @@ const languageColors: Record<string, string> = {
 function LanguageDot({ lang }: { lang: string }) {
   const color = languageColors[lang] ?? "#6b7280";
   return (
-    <span className="flex items-center gap-1.5 text-xs text-slate-400">
+    <span className="flex items-center gap-1.5 text-xs text-muted">
       <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: color }} />
       {lang}
     </span>
@@ -64,7 +64,7 @@ const featured = [
     title: "Voice-Controlled AR Hand Assistant",
     period: "Jan to May 2025",
     tag: "AR / Computer Vision",
-    tagColor: "bg-cyan-500/10 text-yellow-500 border-yellow-500/20",
+    tagColor: "bg-maize text-navy border-maize",
     description:
       "Built a multi-modal AR pipeline on Meta Quest 3 using the Meta XR SDK. Integrates YOLOv11 for real-time object detection, GPT-4o for natural language understanding, CLIP for zero-shot classification, and Moondream for visual question answering.",
     bullets: [
@@ -78,7 +78,7 @@ const featured = [
     title: "Transformer Language Model from First Principles",
     period: "2026",
     tag: "Learning project",
-    tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    tagColor: "bg-maize text-navy border-maize",
     description:
       "A GPT written from scratch in NumPy and PyTorch without reference implementations. Along the way I measured RNN gradient decay, pre-norm versus post-norm gradient flow, and an emergent previous-token head (97% of attention mass).",
     bullets: [
@@ -96,7 +96,7 @@ function FeaturedCard({ item, index }: { item: (typeof featured)[number]; index:
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="glass-card rounded-2xl p-8 h-full flex flex-col hover:border-amber-500/30 transition-all hover:shadow-lg hover:shadow-amber-500/5 group"
+      className="glass-card rounded-2xl p-8 h-full flex flex-col hover:border-link transition-all hover:shadow-lg hover:shadow-navy/10 group"
     >
       <div className="flex items-start justify-between gap-4 mb-5">
         <div className="text-3xl">{item.icon}</div>
@@ -104,15 +104,15 @@ function FeaturedCard({ item, index }: { item: (typeof featured)[number]; index:
           {item.tag}
         </span>
       </div>
-      <h3 className="text-white font-bold text-xl mb-2 leading-tight group-hover:text-amber-100 transition-colors">
+      <h3 className="text-ink font-bold text-xl mb-2 leading-tight group-hover:text-link transition-colors">
         {item.title}
       </h3>
-      <span className="text-slate-500 text-sm font-mono mb-4 block">{item.period}</span>
-      <p className="text-slate-400 text-sm leading-relaxed mb-5">{item.description}</p>
+      <span className="text-dim text-sm font-mono mb-4 block">{item.period}</span>
+      <p className="text-muted text-sm leading-relaxed mb-5">{item.description}</p>
       <ul className="space-y-2">
         {item.bullets.map((b) => (
-          <li key={b} className="flex items-start gap-2 text-sm text-slate-500">
-            <span className="mt-1.5 w-1 h-1 rounded-full bg-amber-500 shrink-0" />
+          <li key={b} className="flex items-start gap-2 text-sm text-dim">
+            <span className="mt-1.5 w-1 h-1 rounded-full bg-link shrink-0" />
             {b}
           </li>
         ))}
@@ -137,13 +137,13 @@ function ProjectCard({ repo, index }: { repo: Repo; index: number }) {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.06 }}
-      className="glass-card rounded-2xl p-6 flex flex-col gap-4 hover:border-amber-500/30 transition-all hover:shadow-lg hover:shadow-amber-500/5 group"
+      className="glass-card rounded-2xl p-6 flex flex-col gap-4 hover:border-link transition-all hover:shadow-lg hover:shadow-navy/10 group"
     >
       {/* Header */}
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-2 min-w-0">
-          <div className="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth={2}>
+          <div className="w-8 h-8 rounded-lg bg-tint border border-tintbd flex items-center justify-center shrink-0">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1d4fa3" strokeWidth={2}>
               <path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" />
             </svg>
           </div>
@@ -151,7 +151,7 @@ function ProjectCard({ repo, index }: { repo: Repo; index: number }) {
             href={repo.html_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold text-white text-sm truncate hover:text-amber-400 transition-colors"
+            className="font-semibold text-ink text-sm truncate hover:text-link transition-colors"
           >
             {repo.name}
           </a>
@@ -161,7 +161,7 @@ function ProjectCard({ repo, index }: { repo: Repo; index: number }) {
             href={repo.html_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-1.5 rounded-lg text-slate-500 hover:text-white hover:bg-[#2e2b24] transition-colors"
+            className="p-1.5 rounded-lg text-dim hover:text-ink hover:bg-tint transition-colors"
             title="View on GitHub"
           >
             <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
@@ -173,7 +173,7 @@ function ProjectCard({ repo, index }: { repo: Repo; index: number }) {
               href={repo.homepage}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1.5 rounded-lg text-slate-500 hover:text-white hover:bg-[#2e2b24] transition-colors"
+              className="p-1.5 rounded-lg text-dim hover:text-ink hover:bg-tint transition-colors"
               title="Live Demo"
             >
               <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -185,7 +185,7 @@ function ProjectCard({ repo, index }: { repo: Repo; index: number }) {
       </div>
 
       {/* Description */}
-      <p className="text-slate-400 text-sm leading-relaxed flex-1 line-clamp-3">
+      <p className="text-muted text-sm leading-relaxed flex-1 line-clamp-3">
         {repo.description ?? "No description provided."}
       </p>
 
@@ -193,7 +193,7 @@ function ProjectCard({ repo, index }: { repo: Repo; index: number }) {
       {repo.topics.length > 0 && (
         <div className="flex flex-wrap gap-1.5">
           {repo.topics.slice(0, 4).map((t) => (
-            <span key={t} className="px-2 py-0.5 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono">
+            <span key={t} className="px-2 py-0.5 rounded-md bg-tint border border-tintbd text-link text-xs font-mono">
               {t}
             </span>
           ))}
@@ -201,17 +201,17 @@ function ProjectCard({ repo, index }: { repo: Repo; index: number }) {
       )}
 
       {/* Footer */}
-      <div className="flex items-center justify-between pt-2 border-t border-[#2e2b24]">
+      <div className="flex items-center justify-between pt-2 border-t border-line">
         <div className="flex items-center gap-4">
           {repo.language && <LanguageDot lang={repo.language} />}
-          <span className="flex items-center gap-1 text-xs text-slate-500">
+          <span className="flex items-center gap-1 text-xs text-dim">
             <StarIcon /> {repo.stargazers_count}
           </span>
-          <span className="flex items-center gap-1 text-xs text-slate-500">
+          <span className="flex items-center gap-1 text-xs text-dim">
             <ForkIcon /> {repo.forks_count}
           </span>
         </div>
-        <span className="text-xs text-slate-600 font-mono">{relativeTime()}</span>
+        <span className="text-xs text-dim font-mono">{relativeTime()}</span>
       </div>
     </motion.div>
   );
@@ -245,11 +245,11 @@ export default function ProjectsPage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <AnimatedSection className="text-center mb-16">
-          <span className="font-mono text-amber-400 text-sm tracking-widest uppercase mb-3 block">Portfolio</span>
-          <h1 className="text-5xl sm:text-6xl font-bold text-white mb-5 leading-tight">
-            My <span className="gradient-text">Projects</span>
+          <span className="font-mono text-link text-sm tracking-widest uppercase mb-3 block">Portfolio</span>
+          <h1 className="text-5xl sm:text-6xl font-bold text-ink mb-5 leading-tight">
+            My <span className="hl-maize">Projects</span>
           </h1>
-          <p className="text-slate-400 text-lg max-w-xl mx-auto">
+          <p className="text-muted text-lg max-w-xl mx-auto">
             Selected builds, followed by open-source work and prototypes from GitHub.
           </p>
         </AnimatedSection>
@@ -257,8 +257,8 @@ export default function ProjectsPage() {
         {/* Featured projects */}
         <section className="mb-24">
           <AnimatedSection className="mb-10">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white text-center">
-              Featured <span className="gradient-text">Projects</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-ink text-center">
+              Featured <span className="hl-maize">Projects</span>
             </h2>
           </AnimatedSection>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -270,9 +270,9 @@ export default function ProjectsPage() {
 
         {/* GitHub section heading */}
         <AnimatedSection className="mb-10 text-center">
-          <span className="font-mono text-amber-400 text-sm tracking-widest uppercase mb-3 block">GitHub</span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white">
-            From <span className="gradient-text">GitHub</span>
+          <span className="font-mono text-link text-sm tracking-widest uppercase mb-3 block">GitHub</span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-ink">
+            From <span className="hl-maize">GitHub</span>
           </h2>
         </AnimatedSection>
 
@@ -286,8 +286,8 @@ export default function ProjectsPage() {
                   onClick={() => setFilter(lang)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     filter === lang
-                      ? "bg-amber-700 text-white"
-                      : "bg-[#1a1a1c] border border-[#2e2b24] text-slate-400 hover:text-white hover:border-amber-500/40"
+                      ? "bg-navy text-white"
+                      : "bg-card border border-line text-muted hover:text-ink hover:border-navy/40"
                   }`}
                 >
                   {lang}
@@ -302,9 +302,9 @@ export default function ProjectsPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {Array.from({ length: 9 }).map((_, i) => (
               <div key={i} className="glass-card rounded-2xl p-6 h-48 animate-pulse">
-                <div className="h-4 bg-[#2e2b24] rounded w-2/3 mb-3" />
-                <div className="h-3 bg-[#2e2b24] rounded w-full mb-2" />
-                <div className="h-3 bg-[#2e2b24] rounded w-4/5" />
+                <div className="h-4 bg-tint rounded w-2/3 mb-3" />
+                <div className="h-3 bg-tint rounded w-full mb-2" />
+                <div className="h-3 bg-tint rounded w-4/5" />
               </div>
             ))}
           </div>
@@ -313,12 +313,12 @@ export default function ProjectsPage() {
         {/* Error */}
         {error && !loading && (
           <div className="text-center py-20">
-            <p className="text-slate-500 text-lg">{error}</p>
+            <p className="text-dim text-lg">{error}</p>
             <a
               href="https://github.com/A2DR1"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block text-amber-400 hover:underline"
+              className="mt-4 inline-block text-link hover:underline"
             >
               Visit GitHub directly →
             </a>
@@ -328,7 +328,7 @@ export default function ProjectsPage() {
         {/* Repos */}
         {!loading && !error && (
           <>
-            <p className="text-slate-600 text-sm mb-6 text-center font-mono">
+            <p className="text-dim text-sm mb-6 text-center font-mono">
               Showing {filtered.length} of {repos.length} repositories
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -337,7 +337,7 @@ export default function ProjectsPage() {
               ))}
             </div>
             {filtered.length === 0 && (
-              <div className="text-center py-20 text-slate-500">
+              <div className="text-center py-20 text-dim">
                 No repositories found for this filter.
               </div>
             )}
@@ -351,7 +351,7 @@ export default function ProjectsPage() {
               href="https://github.com/A2DR1"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#1a1a1c] border border-[#2e2b24] text-white font-semibold hover:border-amber-500/40 hover:text-amber-400 transition-all hover:-translate-y-0.5"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-card border border-line text-ink font-semibold hover:border-navy/40 hover:text-link transition-all hover:-translate-y-0.5"
             >
               <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />

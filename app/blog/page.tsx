@@ -65,21 +65,21 @@ function PostCard({ post, index }: { post: Post; index: number }) {
       transition={{ duration: 0.5, delay: index * 0.07 }}
     >
       <Link href={`/blog/${post.slug}`} className="block">
-        <article className="glass-card rounded-2xl p-7 hover:border-amber-500/30 transition-all hover:shadow-lg hover:shadow-amber-500/5 group cursor-pointer">
+        <article className="glass-card rounded-2xl p-7 hover:border-link transition-all hover:shadow-lg hover:shadow-navy/10 group cursor-pointer">
           <div className="flex flex-wrap gap-2 mb-4">
             {post.tags.map((tag) => (
-              <span key={tag} className="px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono">
+              <span key={tag} className="px-2.5 py-0.5 rounded-full bg-tint border border-tintbd text-link text-xs font-mono">
                 #{tag}
               </span>
             ))}
           </div>
-          <h2 className="text-white text-xl font-bold mb-3 leading-snug group-hover:text-amber-100 transition-colors line-clamp-2">
+          <h2 className="text-ink text-xl font-bold mb-3 leading-snug group-hover:text-link transition-colors line-clamp-2">
             {post.title}
           </h2>
-          <p className="text-slate-400 text-sm leading-relaxed mb-5 line-clamp-3">{post.excerpt}</p>
+          <p className="text-muted text-sm leading-relaxed mb-5 line-clamp-3">{post.excerpt}</p>
           <div className="flex items-center justify-between">
-            <span className="text-slate-600 text-xs font-mono">{formatted}</span>
-            <span className="text-amber-400 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+            <span className="text-dim text-xs font-mono">{formatted}</span>
+            <span className="text-link text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
               Read more <span>→</span>
             </span>
           </div>
@@ -117,11 +117,11 @@ export default function BlogPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <AnimatedSection className="text-center mb-16">
-          <span className="font-mono text-amber-400 text-sm tracking-widest uppercase mb-3 block">Writing</span>
-          <h1 className="text-5xl sm:text-6xl font-bold text-white mb-5 leading-tight">
-            The <span className="gradient-text">Blog</span>
+          <span className="font-mono text-link text-sm tracking-widest uppercase mb-3 block">Writing</span>
+          <h1 className="text-5xl sm:text-6xl font-bold text-ink mb-5 leading-tight">
+            The <span className="hl-maize">Blog</span>
           </h1>
-          <p className="text-slate-400 text-lg max-w-lg mx-auto">
+          <p className="text-muted text-lg max-w-lg mx-auto">
             Thoughts on research, engineering, and building at the frontier of AI and formal methods.
           </p>
         </AnimatedSection>
@@ -136,8 +136,8 @@ export default function BlogPage() {
                   onClick={() => setActiveTag(tag)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     activeTag === tag
-                      ? "bg-amber-700 text-white"
-                      : "bg-[#1a1a1c] border border-[#2e2b24] text-slate-400 hover:text-white hover:border-amber-500/40"
+                      ? "bg-navy text-white"
+                      : "bg-card border border-line text-muted hover:text-ink hover:border-navy/40"
                   }`}
                 >
                   {tag === "All" ? "All Posts" : `#${tag}`}
@@ -153,12 +153,12 @@ export default function BlogPage() {
             {Array.from({ length: 3 }).map((_, i) => (
               <div key={i} className="glass-card rounded-2xl p-7 animate-pulse">
                 <div className="flex gap-2 mb-4">
-                  <div className="h-5 w-16 bg-[#2e2b24] rounded-full" />
-                  <div className="h-5 w-16 bg-[#2e2b24] rounded-full" />
+                  <div className="h-5 w-16 bg-tint rounded-full" />
+                  <div className="h-5 w-16 bg-tint rounded-full" />
                 </div>
-                <div className="h-6 bg-[#2e2b24] rounded w-3/4 mb-3" />
-                <div className="h-4 bg-[#2e2b24] rounded w-full mb-2" />
-                <div className="h-4 bg-[#2e2b24] rounded w-5/6" />
+                <div className="h-6 bg-tint rounded w-3/4 mb-3" />
+                <div className="h-4 bg-tint rounded w-full mb-2" />
+                <div className="h-4 bg-tint rounded w-5/6" />
               </div>
             ))}
           </div>
@@ -168,7 +168,7 @@ export default function BlogPage() {
         {!loading && (
           <div className="space-y-6">
             {filtered.length === 0 ? (
-              <div className="text-center py-20 text-slate-500">No posts found for this tag.</div>
+              <div className="text-center py-20 text-dim">No posts found for this tag.</div>
             ) : (
               filtered.map((post, i) => (
                 <PostCard key={post._id} post={post} index={i} />

@@ -222,17 +222,17 @@ Formal verification is hard, but the tooling has never been better. Give Lean 4 
 
 function renderMarkdown(content: string): string {
   return content
-    .replace(/^# (.+)$/gm, '<h1 class="text-3xl font-bold text-white mt-10 mb-5">$1</h1>')
-    .replace(/^## (.+)$/gm, '<h2 class="text-2xl font-bold text-white mt-8 mb-4">$1</h2>')
-    .replace(/^### (.+)$/gm, '<h3 class="text-xl font-semibold text-amber-300 mt-6 mb-3">$1</h3>')
-    .replace(/```(\w*)\n([\s\S]*?)```/gm, '<pre class="bg-[#0a0a12] border border-[#2e2b24] rounded-xl p-5 overflow-x-auto my-5 text-sm font-mono text-slate-300"><code>$2</code></pre>')
-    .replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-[#2e2b24] text-amber-300 text-sm font-mono">$1</code>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em class="text-slate-300">$1</em>')
-    .replace(/^- (.+)$/gm, '<li class="text-slate-400 ml-4 list-disc list-outside mb-1.5">$1</li>')
+    .replace(/^# (.+)$/gm, '<h1 class="text-3xl font-bold text-ink mt-10 mb-5">$1</h1>')
+    .replace(/^## (.+)$/gm, '<h2 class="text-2xl font-bold text-ink mt-8 mb-4">$1</h2>')
+    .replace(/^### (.+)$/gm, '<h3 class="text-xl font-semibold text-link mt-6 mb-3">$1</h3>')
+    .replace(/```(\w*)\n([\s\S]*?)```/gm, '<pre class="bg-navy border border-navy rounded-xl p-5 overflow-x-auto my-5 text-sm font-mono text-[#e8eef7]"><code>$2</code></pre>')
+    .replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-tint text-link text-sm font-mono">$1</code>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong class="text-ink font-semibold">$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em class="text-ink">$1</em>')
+    .replace(/^- (.+)$/gm, '<li class="text-muted ml-4 list-disc list-outside mb-1.5">$1</li>')
     .replace(/(<li.*<\/li>\n?)+/g, '<ul class="my-4 space-y-1 pl-4">$&</ul>')
-    .replace(/^\d+\. (.+)$/gm, '<li class="text-slate-400 ml-4 list-decimal list-outside mb-1.5">$1</li>')
-    .replace(/^(?!<[h123ulpre])(.+)$/gm, '<p class="text-slate-400 leading-relaxed mb-4">$1</p>')
+    .replace(/^\d+\. (.+)$/gm, '<li class="text-muted ml-4 list-decimal list-outside mb-1.5">$1</li>')
+    .replace(/^(?!<[h123ulpre])(.+)$/gm, '<p class="text-muted leading-relaxed mb-4">$1</p>')
     .replace(/<p[^>]*>\s*<\/p>/g, "");
 }
 
@@ -275,11 +275,11 @@ export default function BlogPostPage() {
     return (
       <div className="min-h-screen pt-24 pb-20 max-w-3xl mx-auto px-4">
         <div className="animate-pulse space-y-4 mt-8">
-          <div className="h-8 bg-[#2e2b24] rounded w-2/3" />
-          <div className="h-4 bg-[#2e2b24] rounded w-1/3" />
+          <div className="h-8 bg-tint rounded w-2/3" />
+          <div className="h-4 bg-tint rounded w-1/3" />
           <div className="mt-8 space-y-3">
             {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="h-4 bg-[#2e2b24] rounded" style={{ width: `${70 + Math.random() * 30}%` }} />
+              <div key={i} className="h-4 bg-tint rounded" style={{ width: `${70 + Math.random() * 30}%` }} />
             ))}
           </div>
         </div>
@@ -290,9 +290,9 @@ export default function BlogPostPage() {
   if (notFound || !post) {
     return (
       <div className="min-h-screen pt-24 pb-20 flex flex-col items-center justify-center text-center px-4">
-        <h1 className="text-4xl font-bold text-white mb-4">Post Not Found</h1>
-        <p className="text-slate-400 mb-8">That blog post doesn&apos;t exist.</p>
-        <Link href="/blog" className="text-amber-400 hover:underline">
+        <h1 className="text-4xl font-bold text-ink mb-4">Post Not Found</h1>
+        <p className="text-muted mb-8">That blog post doesn&apos;t exist.</p>
+        <Link href="/blog" className="text-link hover:underline">
           ← Back to Blog
         </Link>
       </div>
@@ -316,7 +316,7 @@ export default function BlogPostPage() {
           animate={{ opacity: 1, x: 0 }}
           className="mb-10"
         >
-          <Link href="/blog" className="text-slate-500 hover:text-amber-400 text-sm transition-colors flex items-center gap-2">
+          <Link href="/blog" className="text-dim hover:text-link text-sm transition-colors flex items-center gap-2">
             ← Back to Blog
           </Link>
         </motion.div>
@@ -330,17 +330,17 @@ export default function BlogPostPage() {
         >
           <div className="flex flex-wrap gap-2 mb-5">
             {post.tags.map((tag) => (
-              <span key={tag} className="px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono">
+              <span key={tag} className="px-2.5 py-0.5 rounded-full bg-tint border border-tintbd text-link text-xs font-mono">
                 #{tag}
               </span>
             ))}
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-ink mb-5 leading-tight">
             {post.title}
           </h1>
-          <div className="flex items-center gap-4 text-slate-500 text-sm border-b border-[#2e2b24] pb-8">
+          <div className="flex items-center gap-4 text-dim text-sm border-b border-line pb-8">
             <span className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-full bg-gradient-to-br from-amber-500 to-yellow-500 flex items-center justify-center text-xs font-bold text-white">
+              <div className="w-7 h-7 rounded-full bg-gradient-to-br from-navy to-link flex items-center justify-center text-xs font-bold text-white">
                 A
               </div>
               Austin Shen
@@ -364,13 +364,13 @@ export default function BlogPostPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="mt-16 pt-8 border-t border-[#2e2b24]"
+          className="mt-16 pt-8 border-t border-line"
         >
           <div className="flex items-center justify-between">
-            <Link href="/blog" className="text-slate-500 hover:text-amber-400 text-sm transition-colors">
+            <Link href="/blog" className="text-dim hover:text-link text-sm transition-colors">
               ← All Posts
             </Link>
-            <Link href="/contact" className="px-5 py-2.5 rounded-xl bg-amber-700 hover:bg-amber-600 text-white text-sm font-semibold transition-colors">
+            <Link href="/contact" className="px-5 py-2.5 rounded-xl bg-navy hover:bg-navy/90 text-white text-sm font-semibold transition-colors">
               Get in Touch
             </Link>
           </div>

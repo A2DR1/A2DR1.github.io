@@ -27,7 +27,7 @@ const research = [
     period: "Jun 2026 to Present",
     advisor: "with Tianyu Hua and Prof. Nick Haber, Stanford University",
     tag: "Tiny Transformers",
-    tagColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    tagColor: "bg-maize text-navy border-maize",
     description:
       "I study when small transformers learn to compute exactly. I designed and built PaperDiT, a 0.2 to 0.6M-parameter cells-as-tokens 2-D transformer (no positional encodings, fixed-point halting) that computes bit-for-bit against executable oracles: 1,000-digit addition from 10-digit-max training, a universal cellular-automaton interpreter running unseen rules at 50× tape width, and damage-robust interactive physics.",
     bullets: [
@@ -44,7 +44,7 @@ const research = [
     period: "Mar 2026 to Present",
     advisor: "with Prof. Yunong Shi, University of Michigan (also AWS Center for Quantum Computing)",
     tag: "Neural Theorem Proving",
-    tagColor: "bg-sky-500/10 text-sky-400 border-sky-500/20",
+    tagColor: "bg-maize text-navy border-maize",
     description:
       "I co-authored a 24-page pre-registered measurement study, the first controlled test of whether execution throughput limits neural theorem provers. Every claimed proof was independently re-verified by whole-file Lean compilation (633/636).",
     bullets: [
@@ -62,7 +62,7 @@ const research = [
     period: "Jul 2025 to Present",
     advisor: "Prof. Yunong Shi, University of Michigan (also AWS Center for Quantum Computing)",
     tag: "Neuro-Symbolic AI",
-    tagColor: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+    tagColor: "bg-maize text-navy border-maize",
     description:
       "Developing a neuro-symbolic framework to formalize informal mathematical statements into Lean 4 code. The DSP-Plus (Draft, Sketch, Prove) architecture uses LeanTree with structured generation and an iterative compiler-feedback pipeline. Ablation studies conducted on MiniF2F and ProofNet (Pass@k metric).",
     bullets: [
@@ -85,7 +85,7 @@ const experience = [
     description:
       "Built LLMAE, an automated evaluation platform for LLM prompt attacks (modular Python, Django, Docker). A 5-level configuration space with at least 5 options per level yields 3,000+ attack variants, tested across content-safety categories. The platform was adopted for continued development after the internship.",
     tech: ["Django", "Docker", "Python", "LLM"],
-    color: "border-amber-500",
+    color: "border-navy",
   },
   {
     role: "Full Stack Engineer Intern",
@@ -95,7 +95,7 @@ const experience = [
     description:
       "Built the complete backend for a pre-launch AI writing assistant: content storage and retrieval, LLM text refinement, Firestore cross-platform sync, and a Stripe subscription pipeline (webhook verification, customer metadata mapping) tested end-to-end in Stripe's test environment.",
     tech: ["Firebase", "Node.js", "Stripe", "REST API"],
-    color: "border-yellow-500",
+    color: "border-maize",
   },
 ];
 
@@ -110,8 +110,8 @@ function Hero() {
       <HeroScene />
 
       {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#111214]/20 to-[#111214] pointer-events-none" />
-      <div className="absolute inset-0 bg-radial-gradient pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 50% at 50% 40%, rgba(59,130,246,0.08) 0%, transparent 70%)" }} />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ground/20 to-ground pointer-events-none" />
+      <div className="absolute inset-0 bg-radial-gradient pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 50% at 50% 40%, rgba(255,203,5,0.10) 0%, transparent 70%)" }} />
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
@@ -121,8 +121,8 @@ function Hero() {
           transition={{ duration: 0.5 }}
           className="mb-4"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm font-mono">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-tint border border-tintbd text-link text-sm font-mono">
+            <span className="w-2 h-2 rounded-full bg-maize animate-pulse" />
             Available for research &amp; internships
           </span>
         </motion.div>
@@ -131,17 +131,17 @@ function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6 leading-none"
+          className="text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-ink mb-6 leading-none"
         >
           Austin{" "}
-          <span className="gradient-text">Shen</span>
+          <span className="hl-maize">Shen</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-4 leading-relaxed"
+          className="text-lg sm:text-xl text-muted max-w-2xl mx-auto mb-4 leading-relaxed"
         >
           B.S. Computer Science, Mathematics &amp; Data Science &bull; University of Michigan &bull; GPA 4.00 / 4.00
         </motion.p>
@@ -150,7 +150,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.25 }}
-          className="text-base text-slate-500 max-w-xl mx-auto mb-10"
+          className="text-base text-dim max-w-xl mx-auto mb-10"
         >
           I work on neural theorem proving in Lean 4 and on small transformers that learn to compute exactly.
         </motion.p>
@@ -163,13 +163,13 @@ function Hero() {
         >
           <Link
             href="/projects"
-            className="px-8 py-3.5 rounded-xl bg-amber-700 hover:bg-amber-600 text-white font-semibold transition-all hover:shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5"
+            className="px-8 py-3.5 rounded-xl bg-navy hover:bg-navy/90 text-white font-semibold transition-all hover:shadow-lg hover:shadow-navy/20 hover:-translate-y-0.5"
           >
             View Projects
           </Link>
           <Link
             href="/contact"
-            className="px-8 py-3.5 rounded-xl bg-[#1a1a1c] hover:bg-[#2e2b24] text-white font-semibold border border-[#2e2b24] hover:border-amber-500/40 transition-all hover:-translate-y-0.5"
+            className="px-8 py-3.5 rounded-xl bg-card hover:bg-tint text-ink font-semibold border border-line hover:border-navy/40 transition-all hover:-translate-y-0.5"
           >
             Get in Touch
           </Link>
@@ -187,8 +187,8 @@ function Hero() {
             { label: "2 SWE", sub: "Internships" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="text-xl font-bold text-white">{stat.label}</div>
-              <div className="text-xs text-slate-500 mt-0.5">{stat.sub}</div>
+              <div className="text-xl font-bold text-ink">{stat.label}</div>
+              <div className="text-xs text-dim mt-0.5">{stat.sub}</div>
             </div>
           ))}
         </motion.div>
@@ -201,13 +201,13 @@ function Hero() {
         transition={{ delay: 1.2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-slate-600 text-xs font-mono tracking-widest uppercase">Scroll</span>
+        <span className="text-dim text-xs font-mono tracking-widest uppercase">Scroll</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-5 h-8 rounded-full border border-slate-600 flex items-start justify-center pt-1.5"
+          className="w-5 h-8 rounded-full border border-dim flex items-start justify-center pt-1.5"
         >
-          <div className="w-1 h-2 rounded-full bg-slate-500" />
+          <div className="w-1 h-2 rounded-full bg-dim" />
         </motion.div>
       </motion.div>
     </section>
@@ -224,11 +224,11 @@ function About() {
       <AnimatedSection>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <span className="font-mono text-amber-400 text-sm tracking-widest uppercase mb-3 block">About Me</span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
-              Formal reasoning meets <span className="gradient-text">Machine Learning</span>
+            <span className="font-mono text-link text-sm tracking-widest uppercase mb-3 block">About Me</span>
+            <h2 className="text-4xl sm:text-5xl font-bold text-ink mb-6 leading-tight">
+              Formal reasoning meets <span className="hl-maize">Machine Learning</span>
             </h2>
-            <div className="space-y-4 text-slate-400 leading-relaxed">
+            <div className="space-y-4 text-muted leading-relaxed">
               <p>
                 I&apos;m Austin Shen, a Computer Science, Mathematics, and Data Science triple major at the University of Michigan (GPA 4.00 / 4.00, expected May 2027). I am a James B. Angell Scholar and hold University Honors.
               </p>
@@ -244,7 +244,7 @@ function About() {
                 href="https://www.linkedin.com/in/austin-zj-shen"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1a1a1c] border border-[#2e2b24] text-slate-300 hover:text-amber-400 hover:border-amber-500/40 text-sm transition-colors"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-line text-ink hover:text-link hover:border-navy/40 text-sm transition-colors"
               >
                 LinkedIn →
               </a>
@@ -252,13 +252,13 @@ function About() {
                 href="https://github.com/A2DR1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1a1a1c] border border-[#2e2b24] text-slate-300 hover:text-amber-400 hover:border-amber-500/40 text-sm transition-colors"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-line text-ink hover:text-link hover:border-navy/40 text-sm transition-colors"
               >
                 GitHub →
               </a>
               <a
                 href="mailto:austinsz@umich.edu"
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1a1a1c] border border-[#2e2b24] text-slate-300 hover:text-amber-400 hover:border-amber-500/40 text-sm transition-colors"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-card border border-line text-ink hover:text-link hover:border-navy/40 text-sm transition-colors"
               >
                 Email →
               </a>
@@ -278,9 +278,9 @@ function About() {
               { label: "Collaborators", value: "Tianyu Hua, Prof. Nick Haber (Stanford)" },
               { label: "Research Area", value: "Neural theorem proving · Exact computation in tiny transformers" },
             ].map((item) => (
-              <div key={item.label} className="flex justify-between items-start gap-4 border-b border-[#2e2b24] pb-4 last:border-0 last:pb-0">
-                <span className="text-slate-500 text-sm font-mono">{item.label}</span>
-                <span className="text-slate-200 text-sm text-right">{item.value}</span>
+              <div key={item.label} className="flex justify-between items-start gap-4 border-b border-line pb-4 last:border-0 last:pb-0">
+                <span className="text-dim text-sm font-mono">{item.label}</span>
+                <span className="text-ink text-sm text-right">{item.value}</span>
               </div>
             ))}
           </div>
@@ -298,21 +298,21 @@ function Skills() {
   return (
     <section id="skills" className="py-24 px-4 sm:px-6 max-w-6xl mx-auto">
       <AnimatedSection>
-        <span className="font-mono text-amber-400 text-sm tracking-widest uppercase mb-3 block text-center">Technical Skills</span>
-        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-16 text-center leading-tight">
-          Tools &amp; <span className="gradient-text">Technologies</span>
+        <span className="font-mono text-link text-sm tracking-widest uppercase mb-3 block text-center">Technical Skills</span>
+        <h2 className="text-4xl sm:text-5xl font-bold text-ink mb-16 text-center leading-tight">
+          Tools &amp; <span className="hl-maize">Technologies</span>
         </h2>
       </AnimatedSection>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {skills.map((group, i) => (
           <AnimatedSection key={group.category} delay={i * 0.1}>
-            <div className="glass-card rounded-2xl p-6 h-full hover:border-amber-500/30 transition-colors">
-              <h3 className="text-amber-400 font-mono text-xs uppercase tracking-widest mb-5">{group.category}</h3>
+            <div className="glass-card rounded-2xl p-6 h-full hover:border-link transition-colors">
+              <h3 className="text-link font-mono text-xs uppercase tracking-widest mb-5">{group.category}</h3>
               <div className="flex flex-wrap gap-2">
                 {group.items.map((item) => (
                   <span
                     key={item}
-                    className="px-2.5 py-1 rounded-md bg-[#111214] border border-[#2e2b24] text-slate-300 text-xs font-mono hover:border-amber-500/40 hover:text-amber-400 transition-colors cursor-default"
+                    className="px-2.5 py-1 rounded-md bg-ground border border-line text-ink text-xs font-mono hover:border-navy/40 hover:text-link transition-colors cursor-default"
                   >
                     {item}
                   </span>
@@ -334,34 +334,34 @@ function Research() {
   return (
     <section id="research" className="py-24 px-4 sm:px-6 max-w-6xl mx-auto">
       <AnimatedSection>
-        <span className="font-mono text-amber-400 text-sm tracking-widest uppercase mb-3 block text-center">Academic Research</span>
-        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-16 text-center leading-tight">
-          Research <span className="gradient-text">Projects</span>
+        <span className="font-mono text-link text-sm tracking-widest uppercase mb-3 block text-center">Academic Research</span>
+        <h2 className="text-4xl sm:text-5xl font-bold text-ink mb-16 text-center leading-tight">
+          Research <span className="hl-maize">Projects</span>
         </h2>
       </AnimatedSection>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {research.map((item, i) => (
           <AnimatedSection key={item.id} delay={i * 0.15} className={i === 0 ? "lg:col-span-2" : undefined}>
-            <div className="glass-card rounded-2xl p-8 h-full flex flex-col hover:border-amber-500/30 transition-all hover:shadow-lg hover:shadow-amber-500/5 group">
+            <div className="glass-card rounded-2xl p-8 h-full flex flex-col hover:border-link transition-all hover:shadow-lg hover:shadow-navy/10 group">
               <div className="flex items-start justify-between gap-4 mb-5">
                 <div className="text-3xl">{item.icon}</div>
                 <span className={`px-3 py-1 rounded-full text-xs font-medium border ${item.tagColor}`}>
                   {item.tag}
                 </span>
               </div>
-              <h3 className="text-white font-bold text-xl mb-2 leading-tight group-hover:text-amber-100 transition-colors">
+              <h3 className="text-ink font-bold text-xl mb-2 leading-tight group-hover:text-link transition-colors">
                 {item.title}
               </h3>
               <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-4">
-                <span className="text-slate-500 text-sm font-mono">{item.period}</span>
-                <span className="text-slate-700 hidden sm:inline">•</span>
-                <span className="text-slate-500 text-sm">{item.advisor}</span>
+                <span className="text-dim text-sm font-mono">{item.period}</span>
+                <span className="text-faint hidden sm:inline">•</span>
+                <span className="text-dim text-sm">{item.advisor}</span>
               </div>
-              <p className="text-slate-400 text-sm leading-relaxed mb-5">{item.description}</p>
+              <p className="text-muted text-sm leading-relaxed mb-5">{item.description}</p>
               <ul className="space-y-2 mb-5 flex-1">
                 {item.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-2 text-sm text-slate-500">
-                    <span className="mt-1.5 w-1 h-1 rounded-full bg-amber-500 shrink-0" />
+                  <li key={b} className="flex items-start gap-2 text-sm text-dim">
+                    <span className="mt-1.5 w-1 h-1 rounded-full bg-link shrink-0" />
                     {b}
                   </li>
                 ))}
@@ -371,7 +371,7 @@ function Research() {
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-auto inline-flex items-center gap-2 text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors group/link"
+                  className="mt-auto inline-flex items-center gap-2 text-sm font-medium text-link hover:text-navy transition-colors group/link"
                 >
                   {item.linkLabel}
                   <svg className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -395,40 +395,40 @@ function Experience() {
   return (
     <section id="experience" className="py-24 px-4 sm:px-6 max-w-6xl mx-auto">
       <AnimatedSection>
-        <span className="font-mono text-amber-400 text-sm tracking-widest uppercase mb-3 block text-center">Work Experience</span>
-        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-16 text-center leading-tight">
-          Industry <span className="gradient-text">Experience</span>
+        <span className="font-mono text-link text-sm tracking-widest uppercase mb-3 block text-center">Work Experience</span>
+        <h2 className="text-4xl sm:text-5xl font-bold text-ink mb-16 text-center leading-tight">
+          Industry <span className="hl-maize">Experience</span>
         </h2>
       </AnimatedSection>
 
       <div className="relative max-w-3xl mx-auto">
         {/* Timeline line */}
-        <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-amber-500/50 via-amber-500/20 to-transparent" />
+        <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-navy/40 via-navy/15 to-transparent" />
 
         <div className="space-y-8">
           {experience.map((job, i) => (
             <AnimatedSection key={job.company} delay={i * 0.15}>
               <div className="relative flex gap-8">
                 {/* Dot */}
-                <div className={`relative z-10 flex-shrink-0 w-16 h-16 rounded-2xl border-2 ${job.color} bg-[#1a1a1c] flex items-center justify-center text-lg font-bold text-white`}>
+                <div className={`relative z-10 flex-shrink-0 w-16 h-16 rounded-2xl border-2 ${job.color} bg-card flex items-center justify-center text-lg font-bold text-ink`}>
                   {job.company.slice(0, 2)}
                 </div>
                 {/* Card */}
-                <div className="glass-card rounded-2xl p-6 flex-1 hover:border-amber-500/30 transition-colors">
+                <div className="glass-card rounded-2xl p-6 flex-1 hover:border-link transition-colors">
                   <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
                     <div>
-                      <h3 className="text-white font-bold text-lg">{job.role}</h3>
-                      <p className="text-amber-400 font-medium text-sm">{job.company}</p>
+                      <h3 className="text-ink font-bold text-lg">{job.role}</h3>
+                      <p className="text-link font-medium text-sm">{job.company}</p>
                     </div>
                     <div className="text-right">
-                      <span className="text-slate-400 text-sm font-mono block">{job.period}</span>
-                      <span className="text-slate-600 text-xs">{job.location}</span>
+                      <span className="text-muted text-sm font-mono block">{job.period}</span>
+                      <span className="text-dim text-xs">{job.location}</span>
                     </div>
                   </div>
-                  <p className="text-slate-400 text-sm leading-relaxed mb-4">{job.description}</p>
+                  <p className="text-muted text-sm leading-relaxed mb-4">{job.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {job.tech.map((t) => (
-                      <span key={t} className="px-2 py-0.5 rounded text-xs bg-[#111214] border border-[#2e2b24] text-slate-500 font-mono">
+                      <span key={t} className="px-2 py-0.5 rounded text-xs bg-ground border border-line text-dim font-mono">
                         {t}
                       </span>
                     ))}
@@ -454,25 +454,25 @@ function CTA() {
         <div className="max-w-3xl mx-auto text-center">
           <div className="glass-card rounded-3xl p-12 relative overflow-hidden">
             {/* Glow */}
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 via-transparent to-yellow-500/5 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-maize/15 via-transparent to-navy/5 pointer-events-none" />
             <div className="relative z-10">
-              <span className="font-mono text-amber-400 text-sm tracking-widest uppercase mb-3 block">Let&apos;s Work Together</span>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-5 leading-tight">
-                Have a project in <span className="gradient-text">mind?</span>
+              <span className="font-mono text-link text-sm tracking-widest uppercase mb-3 block">Let&apos;s Work Together</span>
+              <h2 className="text-4xl sm:text-5xl font-bold text-ink mb-5 leading-tight">
+                Have a project in <span className="hl-maize">mind?</span>
               </h2>
-              <p className="text-slate-400 text-lg mb-8 max-w-lg mx-auto">
+              <p className="text-muted text-lg mb-8 max-w-lg mx-auto">
                 I&apos;m open to research collaborations, internship opportunities, and interesting engineering problems.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/contact"
-                  className="px-8 py-3.5 rounded-xl bg-amber-700 hover:bg-amber-600 text-white font-semibold transition-all hover:shadow-lg hover:shadow-amber-500/25 hover:-translate-y-0.5"
+                  className="px-8 py-3.5 rounded-xl bg-navy hover:bg-navy/90 text-white font-semibold transition-all hover:shadow-lg hover:shadow-navy/20 hover:-translate-y-0.5"
                 >
                   Send a Message
                 </Link>
                 <Link
                   href="/projects"
-                  className="px-8 py-3.5 rounded-xl bg-[#111214] hover:bg-[#1a1a1c] text-white font-semibold border border-[#2e2b24] hover:border-amber-500/40 transition-all hover:-translate-y-0.5"
+                  className="px-8 py-3.5 rounded-xl bg-ground hover:bg-tint text-ink font-semibold border border-line hover:border-navy/40 transition-all hover:-translate-y-0.5"
                 >
                   Browse Projects
                 </Link>
@@ -506,22 +506,22 @@ function Publications() {
   return (
     <section id="publications" className="py-24 px-4 sm:px-6 max-w-6xl mx-auto">
       <AnimatedSection>
-        <span className="font-mono text-amber-400 text-sm tracking-widest uppercase mb-3 block text-center">Publications</span>
-        <h2 className="text-4xl sm:text-5xl font-bold text-white mb-16 text-center leading-tight">
-          Preprints &amp; <span className="gradient-text">Papers</span>
+        <span className="font-mono text-link text-sm tracking-widest uppercase mb-3 block text-center">Publications</span>
+        <h2 className="text-4xl sm:text-5xl font-bold text-ink mb-16 text-center leading-tight">
+          Preprints &amp; <span className="hl-maize">Papers</span>
         </h2>
       </AnimatedSection>
       <div className="flex flex-col gap-6">
         {publications.map((pub, i) => (
           <AnimatedSection key={i} delay={i * 0.1}>
-            <div className="glass-card rounded-2xl p-8 hover:border-amber-500/30 transition-all hover:shadow-lg hover:shadow-amber-500/5 group">
+            <div className="glass-card rounded-2xl p-8 hover:border-link transition-all hover:shadow-lg hover:shadow-navy/10 group">
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
                 <div className="flex-1">
-                  <h3 className="text-white font-bold text-lg leading-snug group-hover:text-amber-100 transition-colors mb-2">
+                  <h3 className="text-ink font-bold text-lg leading-snug group-hover:text-link transition-colors mb-2">
                     {pub.title}
                   </h3>
-                  <p className="text-amber-400 text-sm font-medium mb-1">{pub.authors}</p>
-                  <div className="flex items-center gap-2 text-slate-500 text-xs font-mono">
+                  <p className="text-link text-sm font-medium mb-1">{pub.authors}</p>
+                  <div className="flex items-center gap-2 text-dim text-xs font-mono">
                     <span>{pub.venue}</span>
                     <span>·</span>
                     <span>{pub.date}</span>
@@ -531,7 +531,7 @@ function Publications() {
                   href={pub.arxiv}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-amber-500/30 text-amber-400 text-sm font-medium hover:bg-amber-500/10 transition-all hover:-translate-y-0.5"
+                  className="shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-link text-link text-sm font-medium hover:bg-tint transition-all hover:-translate-y-0.5"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -539,10 +539,10 @@ function Publications() {
                   arXiv
                 </a>
               </div>
-              <p className="text-slate-400 text-sm leading-relaxed mb-5">{pub.abstract}</p>
+              <p className="text-muted text-sm leading-relaxed mb-5">{pub.abstract}</p>
               <div className="flex flex-wrap gap-2">
                 {pub.tags.map(tag => (
-                  <span key={tag} className="px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono">
+                  <span key={tag} className="px-2.5 py-0.5 rounded-full bg-tint border border-tintbd text-link text-xs font-mono">
                     {tag}
                   </span>
                 ))}
