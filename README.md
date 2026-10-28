@@ -11,7 +11,8 @@ A full-featured personal portfolio website built with Next.js 14 (App Router), T
 | Styling | Tailwind CSS |
 | Animations | Framer Motion |
 | 3D | Three.js + @react-three/fiber + @react-three/drei |
-| Database | MongoDB + Mongoose |
+| Database | MongoDB + Mongoose (contact form only) |
+| Blog | Markdown files rendered at build time (unified, remark, shiki) |
 | Deployment | Vercel |
 
 ## Pages
@@ -20,9 +21,9 @@ A full-featured personal portfolio website built with Next.js 14 (App Router), T
 |-------|-------------|
 | `/` | Home — 3D hero, about, skills, research, experience, CTA |
 | `/projects` | GitHub repos fetched live from GitHub API |
-| `/blog` | Blog post listing (MongoDB + static fallback) |
-| `/blog/[slug]` | Individual blog post |
-| `/contact` | Contact form → MongoDB |
+| `/blog` | Blog post listing, built from markdown files in `content/blog` |
+| `/blog/[slug]` | Individual blog post (statically generated) |
+| `/contact` | Contact form, saved to MongoDB and emailed or posted to a webhook when configured |
 
 ## API Routes
 
@@ -30,9 +31,6 @@ A full-featured personal portfolio website built with Next.js 14 (App Router), T
 |--------|-------|-------------|
 | POST | `/api/contact` | Save contact form submission to MongoDB and notify by email (Resend) and/or webhook (Slack, Discord), each when configured |
 | GET | `/api/projects` | Proxy GitHub API for A2DR1's repos |
-| GET | `/api/blog` | List blog posts |
-| GET | `/api/blog/[slug]` | Single blog post by slug |
-| POST | `/api/blog` | Create new blog post |
 
 ## Local Setup
 
@@ -75,7 +73,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-> **Note**: Without `MONGODB_URI`, the contact form and blog API will error, but the site still works — the blog page falls back to static sample posts.
+> **Note**: Without `MONGODB_URI` the contact form cannot store submissions; everything else, including the blog, works without it.
 
 ## Deploying to Vercel
 
@@ -102,21 +100,26 @@ Follow the prompts. Vercel auto-detects Next.js.
 
 In Vercel → Project Settings → Domains, add your domain. Vercel handles SSL automatically.
 
-## Seeding Blog Posts
+## Writing a Blog Post
 
-To add a blog post via the API:
+Posts are markdown files in `content/blog`. The file name is the URL slug, so
+`content/blog/my-post.md` is served at `/blog/my-post`. Each file starts with
+front matter:
 
-```bash
-curl -X POST http://localhost:3000/api/blog \
-  -H "Content-Type: application/json" \
-  -d '{
-    "title": "My First Post",
-    "slug": "my-first-post",
-    "excerpt": "A short summary of the post.",
-    "content": "# My First Post\n\nFull markdown content here.",
-    "tags": ["thoughts", "engineering"]
-  }'
+```markdown
+---
+title: "My Post Title"
+date: "2026-01-31"
+excerpt: "One or two sentences shown on the list page."
+tags: [lean4, research]
+---
+
+Body in GitHub-flavoured markdown. Fenced code blocks are syntax highlighted,
+including ```lean.
 ```
+
+Commit and push; Vercel rebuilds the site and the post is live. There is no
+database or admin UI involved.
 
 ## Project Structure
 
@@ -127,25 +130,25 @@ portfolio/
 │   ├── page.tsx             # Home page
 │   ├── projects/page.tsx    # Projects page
 │   ├── blog/
-│   │   ├── page.tsx         # Blog listing
-│   │   └── [slug]/page.tsx  # Individual post
+│   │   ├── page.tsx         # Blog listing (reads content/blog)
+│   │   └── [slug]/page.tsx  # Individual post (static)
 │   ├── contact/page.tsx     # Contact form
 │   └── api/
 │       ├── contact/route.ts
-│       ├── projects/route.ts
-│       └── blog/
-│           ├── route.ts
-│           └── [slug]/route.ts
+│       └── projects/route.ts
+├── content/
+│   └── blog/*.md            # Blog posts (front matter + markdown)
 ├── components/
+│   ├── BlogList.tsx         # Client-side tag filter for the blog index
 │   ├── Navbar.tsx
 │   ├── Footer.tsx
 │   ├── HeroScene.tsx        # Three.js 3D hero ("use client")
 │   └── AnimatedSection.tsx  # Framer Motion scroll reveal
 ├── lib/
+│   ├── blog.ts              # Markdown loader and renderer
 │   └── mongodb.ts           # Singleton MongoDB connection
 ├── models/
-│   ├── Contact.ts
-│   └── BlogPost.ts
+│   └── Contact.ts
 ├── vercel.json
 └── .env.local.example
 ```

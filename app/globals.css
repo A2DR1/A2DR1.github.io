@@ -111,3 +111,63 @@ body {
   z-index: 0;
   opacity: 0.4;
 }
+
+/* Blog post body (HTML produced from markdown at build time) */
+.post {
+  color: var(--muted);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.post > :first-child { margin-top: 0; }
+.post h1, .post h2, .post h3, .post h4 {
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 2.2em 0 0.7em;
+  text-wrap: balance;
+}
+.post h1 { font-size: 1.875rem; }
+.post h2 { font-size: 1.5rem; }
+.post h3 { font-size: 1.2rem; color: var(--link); }
+.post p { margin: 0 0 1.1em; }
+.post a { color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
+.post a:hover { color: var(--navy); }
+.post strong { color: var(--ink); font-weight: 600; }
+.post ul, .post ol { margin: 0 0 1.2em; padding-left: 1.5em; }
+.post ul { list-style: disc; }
+.post ol { list-style: decimal; }
+.post li { margin: 0 0 0.4em; }
+.post li::marker { color: var(--link); }
+.post blockquote {
+  margin: 1.4em 0;
+  padding: 0.2em 0 0.2em 1.1em;
+  border-left: 3px solid var(--maize);
+  color: var(--ink);
+}
+.post hr { border: 0; border-top: 1px solid var(--line); margin: 2.5em 0; }
+.post code {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  font-size: 0.9em;
+}
+.post :not(pre) > code {
+  background: var(--tint);
+  color: var(--link);
+  padding: 0.12em 0.4em;
+  border-radius: 0.35em;
+}
+.post pre {
+  background: var(--navy) !important;
+  color: #e8eef7;
+  border-radius: 0.9rem;
+  padding: 1.1rem 1.25rem;
+  margin: 1.4em 0;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.post pre code { background: none; padding: 0; color: inherit; font-size: inherit; }
+.post table { width: 100%; border-collapse: collapse; margin: 1.4em 0; font-size: 0.95em; }
+.post th, .post td { border: 1px solid var(--line); padding: 0.5em 0.75em; text-align: left; }
+.post th { background: var(--tint); color: var(--ink); }
+.post img { max-width: 100%; height: auto; border-radius: 0.75rem; }
